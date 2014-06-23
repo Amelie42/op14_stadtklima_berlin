@@ -21,6 +21,7 @@
   data frame of poll results
   
 **Example**
+
 filepath<-"d:/TUB/Lehre/SoSe14/GP_OEKUP_OP_LA_Stadtklima_Berlin/R/data_r/allefrageboegen.csv"
 poll_data<- op14_read_poll_func(filepath) 
 
