@@ -6,7 +6,7 @@
   
   Functions for:
   1. reading raw poll data
-  2. preprocessing (converting time formate)   
+  2. preprocessing (converting time information to R standards)   
 
 **Usage**
   
@@ -14,7 +14,7 @@
 
 **Input**
   
-  filepath: full path of data (.csv, comma separeted!) file
+  filepath: full path of data (.csv, comma separated!) file
 
 **Output**
   
@@ -27,20 +27,20 @@
 
 read the data (csv)
 ```{r}
-readGHCNdata <- function(filepath) {
+op14_read_poll_func <- function(filepath) {
   
   raw_data<-read.csv(filepath)  
 ```
 
 convert time
 ```{r}
-raw_data$Zeit<-as.character(raw_data$Zeit)
+raw_data$Zeit<-as.character(raw_data$Zeit)# convert variable type to character 
 
-raw_data$Datum<-as.character(raw_data$Datum)
+raw_data$Datum<-as.character(raw_data$Datum)# convert variable type to character
 
 time <- paste(raw_data$Datum,raw_data$Zeit)
 
-time <-strptime(time,"%d%m%y %H%M")
+time <-strptime(time,"%d%m%y %H%M")# create one variable
   
 ```
 
@@ -48,7 +48,7 @@ prepare new data frame
 ```{r}
 var_names <- names(raw_data)#get variable names (column names)
 
-idx <- which(var_names != "Datum" &  names != "Zeit") # kick out old time info 
+idx <- which(var_names != "Datum" & var_names != "Zeit") # kick out old time info 
 
 poll_data <- cbind.data.frame(raw_data[,idx],time)# build new data fram with new time info
 
