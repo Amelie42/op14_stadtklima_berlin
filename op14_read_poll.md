@@ -22,8 +22,12 @@
   
 **Example**
 
-filepath<-"d:/TUB/Lehre/SoSe14/GP_OEKUP_OP_LA_Stadtklima_Berlin/R/data_r/allefrageboegen.csv"
+filepath<-"d:/TUB/Lehre/SoSe14/GP_OEKUP_OP_LA_Stadtklima_Berlin/R/data_r/ISI_2406/allefrageboegen.csv"
 poll_data<- op14_read_poll_func(filepath) 
+
+
+**To_DO**
+keyword summertime Y/N
 
 **Author**  
   MaO
@@ -38,11 +42,13 @@ op14_read_poll_func <- function(filepath) {
 
 convert time
 ```{r}
-raw_data$Zeit<-as.character(raw_data$Zeit)# convert variable type to character 
+
+wintercon <-as.numeric(as.character(raw_data$Zeit))-100
+raw_data$Zeit<-as.character(wintercon)# convert variable type to character 
 
 raw_data$Datum<-as.character(raw_data$Datum)# convert variable type to character
 
-time <- paste(raw_data$Datum,raw_data$Zeit)
+time <- paste(raw_data$Datum,wintercon)
 
 time <-strptime(time,"%d%m%y %H%M")# create one variable
   
