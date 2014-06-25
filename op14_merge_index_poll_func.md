@@ -5,7 +5,7 @@
 **Description**
   
   Functions for:
-  1. reading raw BIOMET and poll DAta
+  1. reading raw BIOMET and poll Data
   2. merging both   
 
 **Usage**
@@ -23,7 +23,8 @@
 
 **Output**
   
-  data frame of poll and PMV
+  data frame of poll and UTCI
+  infos on UTCI at: http://www.utci.org/utci_doku.php
   
 **Example**
 
